@@ -1,0 +1,30 @@
+{
+  "name": "cannes_poll",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "serve": "node server.js",
+    "serve_prod": "forever start server.js",
+    "dev": "node server-dev.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "async": "^2.6.0",
+    "body-parser": "^1.18.2",
+    "cors": "^2.8.4",
+    "ejs": "^2.5.8",
+    "express": "^4.16.3",
+    "express-pug": "^1.0.0",
+    "fs": "0.0.1-security",
+    "html": "^1.0.0",
+    "http": "0.0.0",
+    "https": "^1.0.0",
+    "path": "^0.12.7",
+    "pug": "^2.0.3",
+    "rethinkdb": "^2.3.3",
+    "socket.io": "^2.0.4"
+  }
+}

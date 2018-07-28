@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>Current poll</title>
+    </head>
+    <body>
+        <h1>Current Poll</h1>
+
+        <h3>CHARTS HERE</h3>
+
+        <div id="chartContainer1" style="height: 300px; width: 30%;"></div>
+        <div id="chartContainer2" style="height: 300px; width: 30%;"></div>
+        <div id="chartContainer3" style="height: 300px; width: 30%;"></div>
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+     <script type="text/javascript" src="/public/socket.io.js"></script>
+    <script type="text/javascript">
+    window.onload = function() {
+        var pollData = JSON.parse('<%- JSON.stringify(pollData) %>')
+        var chart1 = new CanvasJS.Chart("chartContainer1", {
+            animationEnabled: true,
+            title: {
+                text: "What is the first word coming to your mind when you heard the words ‘cool parents’? [e.g. ‘love’, ‘respect’, ‘forgiveness’, etc.] 等你听到“Cool 爸妈”时， 你最先想到的一个词 是什么?【例如，“无条件的爱”;“尊重”;“宽容” 等】"
+            },
+            data: [{
+                type: "pie",
+                startAngle: 240,
+                // yValueFormatString: "##0.00\"%\"",
+                indexLabel: "{label} ",
+                dataPoints: pollData.group1
+            }]
+        });
+        chart1.render();
+
+        var chart2 = new CanvasJS.Chart("chartContainer2", {
+            animationEnabled: true,
+            title: {
+                text: "What are the most important 3 qualities that you think a cool parent should have? 你觉 得一位“酷”的爸爸/妈妈最应该具有的 3 个品质是什么?"
+            },
+            data: [{
+                type: "pie",
+                startAngle: 240,
+                // yValueFormatString: "##0.00\"%\"",
+                indexLabel: "{label} ",
+                dataPoints: pollData.group2
+            }]
+        });
+        chart2.render();
+
+        var chart3 = new CanvasJS.Chart("chartContainer3", {
+            animationEnabled: true,
+            title: {
+                text: "GROUP 3"
+            },
+            data: [{
+                type: "pie",
+                startAngle: 240,
+                // yValueFormatString: "##0.00\"%\"",
+                indexLabel: "{label} ",
+                dataPoints: pollData.group3
+            }]
+        });
+        chart3.render();
+
+        // $(function() {
+            var socket = io()
+            socket.on('vote', function(vote){
+                console.log(vote)
+                // rerender chart
+                var dataPoints1 = chart1.data[0].dataPoints
+                var dataPoints2 = chart2.data[0].dataPoints
+                var dataPoints3 = chart3.data[0].dataPoints
+                console.log(chart1.options.data)
+                chart1.options.data[0].dataPoints = [
+                    {y: dataPoints1[0].y + vote.new_val.love, label:"无条件的爱" },
+                    {y: dataPoints1[1].y + vote.new_val.respect, label:"尊重" },
+                    {y: dataPoints1[2].y + vote.new_val.wait, label:"等" }
+                ]
+                chart2.options.data[0].dataPoints = [
+                    {y: dataPoints2[0].y + vote.new_val.Chess_Club, label:"Chess_Club" },
+                    {y: dataPoints2[1].y + vote.new_val.Orchestra, label:"Orchestra" },
+                    {y: dataPoints2[2].y + vote.new_val.Student_Theater, label:"Student_Theater" }
+                ]
+                chart3.options.data[0].dataPoints = [
+                    {y: dataPoints3[0].y + vote.new_val.IGNITE, label:"IGNITE" },
+                    {y: dataPoints3[1].y + vote.new_val.Oikos, label:"Oikos" },
+                    {y: dataPoints3[2].y + vote.new_val.Student_Impact, label:"Student_Impact" }
+                ]
+                chart1.render()
+                chart2.render()
+                chart3.render()
+                // console.log(chart.options.data)
+                console.log(vote)
+            })
+        // })
+    }
+
+    </script>
+    </body>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+        <style media="screen">
+            .vote-block{
+                border: 1px solid black;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Club Voting</h1>
+            <hr>
+        <form class="form" action="/vote" method="post" id="voteForm">
+            <div>
+                <label for="code" class="label col-xs-3">Code</label>
+                <input type="text" class="form-control number col-xs-6 col-sm-6"  onkeyup="this.value=this.value.replace(/[^\d].*/,'')"  name="code" maxlength="6" value="" placeholder="289XXX">
+            </div>
+            <br>
+            <!-- <div class="row"> -->
+            <p>What is the first word coming to your mind when you heard the words ‘cool parents’? [e.g. ‘love’, ‘respect’, ‘forgiveness’, etc.] 等你听到“Cool 爸妈”时， 你最先想到的一个词 是什么?【例如，“无条件的爱”;“尊重”;“宽容” 等】</p>
+            <fieldset id="group1" class="form-group col-xs-12 col-md-12 border border-primary rounded">
+                <!-- <div class="border-primary rounded"> -->
+                    <div class="col-sm-3">
+                    <input type="radio" id="love"value="love" name="group1">
+                    <label for="love">无条件的爱</label>
+                    </div>
+                    <div class="col-sm-3">
+                    <input type="radio" id="respect" value="respect" name="group1">
+                    <label for="respect">尊重</label>
+                    </div>
+                    <div class="col-sm-3">
+                    <input type="radio" id="wait" value="wait" name="group1">
+                    <label for="wait">等</label>
+                    <!-- </div> -->
+                    </div>
+            </fieldset>
+        <!-- </div> -->
+            <fieldset id="group2" class="form-group col-md-12 border border-success rounded">
+              <p>What are the most important 3 qualities that you think a cool parent should have? 你觉 得一位“酷”的爸爸/妈妈最应该具有的 3 个品质是什么?</p>
+                <!-- <div class="row vote-block"> -->
+                    <div class="col-md-4">
+                    <input type="radio" id="Orchestra" value="Orchestra" name="group2">
+                    <label for="Orchestra">Orchestra</label>
+                    </div>
+                    <div class="col-md-4">
+                    <input type="radio" id="Chess_Club"value="Chess_Club" name="group2">
+                    <label for="Chess_Club">Chess Club</label>
+                    </div>
+                    <div class="col-md-4">
+                    <input type="radio" id="Student_Theater" value="Student_Theater" name="group2">
+                    <label for="Student_Theater">Student Theater</label>
+                    </div>
+                <!-- </div> -->
+            </fieldset>
+
+            <fieldset id="group3" class="form-group col-md-12 border border-danger rounded">
+                <!-- <div class="row vote-block"> -->
+                    <div class="col-md-4">
+                    <input type="radio" id="Student_Impact" value="Student_Impact" name="group3">
+                    <label for="Student_Impact">Student Impact</label>
+                    </div>
+                    <div class="col-md-4">
+                    <input type="radio" id="IGNITE"value="IGNITE" name="group3">
+                    <label for="IGNITE">IGNITE</label>
+                    </div>
+                    <div class="col-md-4">
+                    <input type="radio" id="Oikos" value="Oikos" name="group3">
+                    <label for="Oikos">Oikos</label>
+                    </div>
+                <!-- </div> -->
+            </fieldset>
+        <div class="row">
+            <button type="submit" class="btn btn-primary col-lg-2">Submit</button>
+            <button type="reset" class="btn btn-danger col-lg-2">Reset</button>
+         </div>
+        </form>
+        <div class="row">
+            <div id="flash" class="col-sm-12 col-md-6-offset-3">
+
+            </div>
+        </div>
+        </div>
+        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script type="text/javascript">
+            $(function() {
+                var form = $('#voteForm');
+                var flash = $('#flash');
+
+                $(form).submit(function(event){
+                    event.preventDefault();
+                    var formData = $(form).serialize();
+                    $.ajax({
+                        type:'POST',
+                        url:$(form).attr('action'),
+                        data:formData,
+                        success: function(res){
+                            if(res == "success"){
+                                $("#flash").html("Your vote has been counted")
+                                if($('#flash').hasClass('alert-danger')){
+                                    $('#flash').removeClass('alert-danger')
+                                }
+                                $("#flash").addClass("alert alert-success")
+                            } else if(res == "voted"){
+                                $("#flash").html("You already voted :<")
+                                if($('#flash').hasClass('alert-success')){
+                                    $('#flash').removeClass('alert-success')
+                                }
+                                $("#flash").addClass("alert alert-danger")
+                            } else if(res="wrongcode") {
+                                $("#flash").html("Invalid code, please try again")
+                                if($('#flash').hasClass('alert-success')){
+                                    $('#flash').removeClass('alert-success')
+                                }
+                                $("#flash").addClass("alert alert-danger")
+                            } else {
+                                $("#flash").html("Error, please try again")
+                                if($('#flash').hasClass('alert-success')){
+                                    $('#flash').removeClass('alert-success')
+                                }
+                                $("#flash").addClass("alert alert-danger")
+                            }
+                            $(form).trigger("reset");
+                        }
+
+                    }).done(function(response){
+                        console.log(response)
+                    })
+                })
+            })
+        </script>
+    </body>
+</html>

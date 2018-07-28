@@ -1,0 +1,11 @@
+Running rethinkdb 2.3.6~0xenial (GCC 5.3.1)...
+Running on Linux 4.4.0-116-generic x86_64
+Loading data from directory /var/www/cannes_poll/rethinkdb_data
+Listening for intracluster connections on port 29015
+Listening for client driver connections on port 28015
+Listening for administrative HTTP connections on port 8080
+Listening on cluster addresses: 127.0.0.1, 127.0.1.1, ::1
+Listening on driver addresses: 127.0.0.1, 127.0.1.1, ::1
+Listening on http addresses: 127.0.0.1, 127.0.1.1, ::1
+To fully expose RethinkDB on the network, bind to all addresses by running rethinkdb with the `--bind all` command line option.
+Server ready, "cannes_poll_h2a" 47a84af2-8c3e-416d-9cfa-59926a12ca01

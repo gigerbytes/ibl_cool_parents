@@ -1,0 +1,35 @@
+2018-03-28T09:47:54.439253877 0.013328s notice: Recursively removing directory /var/www/cannes_poll/rethinkdb_data/tmp
+2018-03-28T09:47:54.442658082 0.016731s notice: Initializing directory /var/www/cannes_poll/rethinkdb_data
+2018-03-28T09:47:54.442831697 0.016905s info: Creating a default database for your convenience. (This is because you ran 'rethinkdb' without 'create', 'serve', or '--join', and the directory '/var/www/cannes_poll/rethinkdb_data' did not already exist or is empty.)
+2018-03-28T09:47:54.442874431 0.016948s notice: Running rethinkdb 2.3.6~0xenial (GCC 5.3.1)...
+2018-03-28T09:47:54.445249752 0.019325s notice: Running on Linux 4.4.0-116-generic x86_64
+2018-03-28T09:47:54.445371543 0.019445s notice: Loading data from directory /var/www/cannes_poll/rethinkdb_data
+2018-03-28T09:47:54.465917812 0.039991s info: Automatically using cache size of 402 MB
+2018-03-28T09:47:54.466440521 0.040514s notice: Listening for intracluster connections on port 29015
+2018-03-28T09:47:54.467985023 0.042058s notice: Listening for client driver connections on port 28015
+2018-03-28T09:47:54.468247576 0.042321s notice: Listening for administrative HTTP connections on port 8080
+2018-03-28T09:47:54.468252076 0.042325s notice: Listening on cluster addresses: 127.0.0.1, 127.0.1.1, ::1
+2018-03-28T09:47:54.468256333 0.042329s notice: Listening on driver addresses: 127.0.0.1, 127.0.1.1, ::1
+2018-03-28T09:47:54.468258330 0.042331s notice: Listening on http addresses: 127.0.0.1, 127.0.1.1, ::1
+2018-03-28T09:47:54.468262194 0.042335s notice: To fully expose RethinkDB on the network, bind to all addresses by running rethinkdb with the `--bind all` command line option.
+2018-03-28T09:47:54.468266176 0.042339s notice: Server ready, "cannes_poll_h2a" 47a84af2-8c3e-416d-9cfa-59926a12ca01
+2018-03-28T09:47:57.041226032 2.615300s notice: Server got SIGINT from pid 0, uid 0; shutting down...
+2018-03-28T09:47:57.041312518 2.615386s notice: Shutting down client connections...
+2018-03-28T09:47:57.041468724 2.615542s notice: All client connections closed.
+2018-03-28T09:47:57.041472606 2.615546s notice: Shutting down storage engine... (This may take a while if you had a lot of unflushed data in the writeback cache.)
+2018-03-28T09:47:57.041828628 2.615902s notice: Storage engine shut down.
+2018-03-28T09:49:01.805097317 0.008474s notice: Running rethinkdb 2.3.6~0xenial (GCC 5.3.1)...
+2018-03-28T09:49:01.809099366 0.012478s notice: Running on Linux 4.4.0-116-generic x86_64
+2018-03-28T09:49:01.810835263 0.014212s notice: Loading data from directory /var/www/cannes_poll/rethinkdb_data
+2018-03-28T09:49:01.821518893 0.024895s info: Automatically using cache size of 402 MB
+2018-03-28T09:49:01.822058442 0.025435s notice: Listening for intracluster connections on port 29015
+2018-03-28T09:49:01.823597476 0.026974s notice: Listening for client driver connections on port 28015
+2018-03-28T09:49:01.823780018 0.027156s notice: Listening for administrative HTTP connections on port 8080
+2018-03-28T09:49:01.823784967 0.027161s notice: Listening on cluster addresses: 127.0.0.1, 127.0.1.1, ::1
+2018-03-28T09:49:01.823787155 0.027163s notice: Listening on driver addresses: 127.0.0.1, 127.0.1.1, ::1
+2018-03-28T09:49:01.823791452 0.027167s notice: Listening on http addresses: 127.0.0.1, 127.0.1.1, ::1
+2018-03-28T09:49:01.823795347 0.027171s notice: To fully expose RethinkDB on the network, bind to all addresses by running rethinkdb with the `--bind all` command line option.
+2018-03-28T09:49:01.823799261 0.027175s notice: Server ready, "cannes_poll_h2a" 47a84af2-8c3e-416d-9cfa-59926a12ca01
+2018-03-28T09:53:40.520345167 278.723722s info: Table 8d527e09-f3da-44f6-96a0-2b57a15af214: Starting a new Raft election for term 1.
+2018-03-28T09:53:40.521022207 278.724398s info: Table 8d527e09-f3da-44f6-96a0-2b57a15af214: Added replica on this server.
+2018-03-28T09:53:40.521635718 278.725012s info: Table 8d527e09-f3da-44f6-96a0-2b57a15af214: This server is Raft leader for term 1. Latest log index is 0.
