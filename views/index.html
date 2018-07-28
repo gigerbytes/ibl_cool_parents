@@ -15,11 +15,11 @@
             <h1>Club Voting</h1>
             <hr>
         <form class="form" action="/vote" method="post" id="voteForm">
-            <div>
+            <!-- <div>
                 <label for="code" class="label col-xs-3">Code</label>
                 <input type="text" class="form-control number col-xs-6 col-sm-6"  onkeyup="this.value=this.value.replace(/[^\d].*/,'')"  name="code" maxlength="6" value="" placeholder="289XXX">
             </div>
-            <br>
+            <br> -->
             <!-- <div class="row"> -->
             <p>What is the first word coming to your mind when you heard the words ‘cool parents’? [e.g. ‘love’, ‘respect’, ‘forgiveness’, etc.] 等你听到“Cool 爸妈”时， 你最先想到的一个词 是什么?【例如，“无条件的爱”;“尊重”;“宽容” 等】</p>
             <fieldset id="group1" class="form-group col-xs-12 col-md-12 border border-primary rounded">
@@ -40,36 +40,46 @@
             </fieldset>
         <!-- </div> -->
             <fieldset id="group2" class="form-group col-md-12 border border-success rounded">
-              <p>What are the most important 3 qualities that you think a cool parent should have? 你觉 得一位“酷”的爸爸/妈妈最应该具有的 3 个品质是什么?</p>
+              <p>What is the one thing that your parents do that you <b>like</b> the most?</p>
                 <!-- <div class="row vote-block"> -->
                     <div class="col-md-4">
-                    <input type="radio" id="Orchestra" value="Orchestra" name="group2">
-                    <label for="Orchestra">Orchestra</label>
+                    <input type="radio" id="inclusive" value="inclusive" name="group2">
+                    <label for="inclusive">包容</label>
                     </div>
                     <div class="col-md-4">
-                    <input type="radio" id="Chess_Club"value="Chess_Club" name="group2">
-                    <label for="Chess_Club">Chess Club</label>
+                    <input type="radio" id="accompany"value="accompany" name="group2">
+                    <label for="accompany">陪伴</label>
                     </div>
                     <div class="col-md-4">
-                    <input type="radio" id="Student_Theater" value="Student_Theater" name="group2">
-                    <label for="Student_Theater">Student Theater</label>
+                    <input type="radio" id="support" value="support" name="group2">
+                    <label for="support">支持</label>
+                    </div>
+                    <div class="col-md-4">
+                    <input type="radio" id="meals" value="meals" name="group2">
+                    <label for="meals">饭菜</label>
                     </div>
                 <!-- </div> -->
             </fieldset>
 
             <fieldset id="group3" class="form-group col-md-12 border border-danger rounded">
+              <p>What is the one thing that your parents do that you <b>dislike</b> the most:?</p>
+
                 <!-- <div class="row vote-block"> -->
                     <div class="col-md-4">
-                    <input type="radio" id="Student_Impact" value="Student_Impact" name="group3">
-                    <label for="Student_Impact">Student Impact</label>
+                    <input type="radio" id="nagging" value="nagging" name="group3">
+                    <label for="nagging">碎碎念</label>
                     </div>
                     <div class="col-md-4">
-                    <input type="radio" id="IGNITE"value="IGNITE" name="group3">
-                    <label for="IGNITE">IGNITE</label>
+                    <input type="radio" id="interfere"value="interfere" name="group3">
+                    <label for="interfere">过分干涉</label>
                     </div>
                     <div class="col-md-4">
-                    <input type="radio" id="Oikos" value="Oikos" name="group3">
-                    <label for="Oikos">Oikos</label>
+                    <input type="radio" id="fight" value="fight" name="group3">
+                    <label for="fight">父母吵架</label>
+                    </div>
+                    <div class="col-md-4">
+                    <input type="radio" id="diary" value="diary" name="group3">
+                    <label for="diary">偷看日记</label>
                     </div>
                 <!-- </div> -->
             </fieldset>

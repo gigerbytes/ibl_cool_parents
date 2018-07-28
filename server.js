@@ -46,26 +46,29 @@ r.connect({db:"parents"}).then(function(conn){
 
 // Accept form (form with data posted to express app)
 app.post('/vote', function(req, res){
-    if(req.body.code < 100000 || req.body.code > 999999) { // check code is within 6 digits
-        res.send('wrongcode')
-    } else {
-
+    // if(req.body.code < 100000 || req.body.code > 999999) { // check code is within 6 digits
+        // res.send('wrongcode')
+    // } else {
+    console.log(req.body.group3)
         datObj = {
-            'code' : req.body.code,
+            // 'code' : req.body.code,
             'love' : 0,
             'respect' : 0,
             'wait': 0,
-            'Orchestra':0,
-            'Chess_Club':0,
-            'Student_Theater':0,
-            'Student_Impact':0,
-            'IGNITE':0,
-            'Oikos':0
+            'inclusive' : 0,
+            'accompany': 0,
+            'support':0,
+            'meals':0,
+            'nagging':0,
+            'interfere':0,
+            'fight':0,
+            'diary':0
         }
 
         datObj[req.body.group1] = 1
         datObj[req.body.group2] = 1
         datObj[req.body.group3] = 1
+        console.log(datObj)
 
         voted = rdb.save("records",datObj).then(function(record){
             if(record.errors == 0) {
@@ -74,85 +77,99 @@ app.post('/vote', function(req, res){
                 res.send("voted")
             }
         })
-    }
+    // }
 })
 // Send result to deploy client (view over here)
 app.get('/poll', function(req, res){
     r.connect({db:"parents"}).then(function(conn){
         var stack = {}
-        stack.PIECES = function(cb) {
-            r.table('records').filter({'PIECES' : 1}).count().run(conn, function(err, count){
+        stack.love = function(cb) {
+            r.table('records').filter({'love' : 1}).count().run(conn, function(err, count){
                 cb(null, count)
             })
         }
-        stack.Unigay = function(cb) {
-            r.table('records').filter({'Unigay' : 1}).count().run(conn, function(err, count){
+        stack.respect = function(cb) {
+            r.table('records').filter({'respect' : 1}).count().run(conn, function(err, count){
                 cb(null, count)
             })
         }
-        stack.MUN = function(cb) {
-            r.table('records').filter({'MUN' : 1}).count().run(conn, function(err, count){
+        stack.wait = function(cb) {
+            r.table('records').filter({'wait' : 1}).count().run(conn, function(err, count){
                 cb(null, count)
             })
         }
-        stack.Oikos = function(cb) {
-            r.table('records').filter({'Oikos' : 1}).count().run(conn, function(err, count){
+        stack.inclusive = function(cb) {
+            r.table('records').filter({'inclusive' : 1}).count().run(conn, function(err, count){
                 cb(null, count)
             })
         }
-        stack.Chess_Club = function(cb) {
-            r.table('records').filter({'Chess_Club' : 1}).count().run(conn, function(err, count){
+        stack.accompany = function(cb) {
+            r.table('records').filter({'accompany' : 1}).count().run(conn, function(err, count){
                 cb(null, count)
             })
         }
-        stack.Orchestra = function(cb) {
-            r.table('records').filter({'Orchestra' : 1}).count().run(conn, function(err, count){
+        stack.support = function(cb) {
+            r.table('records').filter({'support' : 1}).count().run(conn, function(err, count){
                 cb(null, count)
             })
         }
-        stack.Student_Theater = function(cb) {
-            r.table('records').filter({'Student_Theater' : 1}).count().run(conn, function(err, count){
+        stack.meals = function(cb) {
+            r.table('records').filter({'meals' : 1}).count().run(conn, function(err, count){
                 cb(null, count)
             })
         }
-
-        stack.Oikos = function(cb) {
-            r.table('records').filter({'Oikos' : 1}).count().run(conn, function(err, count){
+        stack.nagging = function(cb) {
+            r.table('records').filter({'nagging' : 1}).count().run(conn, function(err, count){
                 cb(null, count)
             })
         }
-        stack.IGNITE = function(cb) {
-            r.table('records').filter({'IGNITE' : 1}).count().run(conn, function(err, count){
+        stack.interfere = function(cb) {
+            r.table('records').filter({'interfere' : 1}).count().run(conn, function(err, count){
                 cb(null, count)
             })
         }
-        stack.Student_Impact = function(cb) {
-            r.table('records').filter({'Student_Impact' : 1}).count().run(conn, function(err, count){
+        stack.fight = function(cb) {
+            r.table('records').filter({'fight' : 1}).count().run(conn, function(err, count){
                 cb(null, count)
             })
         }
+        stack.diary = function(cb) {
+            r.table('records').filter({'diary' : 1}).count().run(conn, function(err, count){
+                cb(null, count)
+            })
+        }
+        // stack.Student_Impact = function(cb) {
+        //     r.table('records').filter({'Student_Impact' : 1}).count().run(conn, function(err, count){
+        //         cb(null, count)
+        //     })
+        // }
 
         async.parallel(stack, function(err, results){
+          console.log("results")
+          console.log(results)
             if(err){
                 console.log(err)
             }
             var pollData = {
                 'group1' : [
-                    {label :'PIECES', y: results.PIECES},
-                    {label :'Unigay', y:results.Unigay},
-                    {label :'MUN', y: results.MUN},
+                    {label :'无条件的爱', y: results.love},
+                    {label :'尊重', y:results.respect},
+                    {label :'等', y: results.wait},
                 ],
                 'group2': [
-                    {label:'Chess_Club', y: results.Chess_Club},
-                    {label:'Orchestra', y: results.Orchestra},
-                    {label:'Student_Theater', y: results.Student_Theater},
+                    {label: '碎碎念', y: results.nagging},
+                    {label: '过分干涉', y: results.interfere},
+                    {label: '父母吵架', y:results.fight},
+                    {label: '偷看日记', y:results.diary},
                 ],
                 'group3': [
-                    {label: 'Oikos', y: results.Oikos},
-                    {label: 'IGNITE', y: results.IGNITE},
-                    {label: 'Student_Impact', y:results.Student_Impact},
+                  {label:'包容', y: results.inclusive},
+                  {label:'陪伴', y: results.accompany},
+                  {label:'支持', y: results.support},
+                  {label:'饭菜', y: results.meals},
                 ]
             };
+            console.log(pollData)
             res.render("poll", {pollData: pollData})
 
         })
