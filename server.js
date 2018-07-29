@@ -154,7 +154,7 @@ app.get('/poll', function(req, res){
                 'group1' : [
                     {label :'无条件的爱', y: results.love},
                     {label :'尊重', y:results.respect},
-                    {label :'等', y: results.wait},
+                    {label :'耐心', y: results.wait},
                 ],
                 'group2': [
                     {label: '碎碎念', y: results.nagging},
