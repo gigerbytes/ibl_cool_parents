@@ -62,7 +62,9 @@ app.post('/vote', function(req, res){
             'nagging':0,
             'interfere':0,
             'fight':0,
-            'diary':0
+            'diary':0,
+            'force':0,
+            'long':0
         }
 
         datObj[req.body.group1] = 1
@@ -138,6 +140,16 @@ app.get('/poll', function(req, res){
                 cb(null, count)
             })
         }
+        stack.force = function(cb) {
+            r.table('records').filter({'force' : 1}).count().run(conn, function(err, count){
+                cb(null, count)
+            })
+        }
+        stack.long = function(cb) {
+            r.table('records').filter({'long' : 1}).count().run(conn, function(err, count){
+                cb(null, count)
+            })
+        }
         // stack.Student_Impact = function(cb) {
         //     r.table('records').filter({'Student_Impact' : 1}).count().run(conn, function(err, count){
         //         cb(null, count)
@@ -152,21 +164,24 @@ app.get('/poll', function(req, res){
             }
             var pollData = {
                 'group1' : [
-                    {label :'无条件的爱', y: results.love},
-                    {label :'尊重', y:results.respect},
-                    {label :'耐心', y: results.wait},
+                    {label :'无条件的爱 / love', y: results.love},
+                    {label :'尊重 / respect', y:results.respect},
+                    {label :'耐心 / patience', y: results.wait},
                 ],
                 'group2': [
-                    {label: '碎碎念', y: results.nagging},
-                    {label: '过分干涉', y: results.interfere},
-                    {label: '父母吵架', y:results.fight},
-                    {label: '偷看日记', y:results.diary},
+                  {label:'包容 / inclusive', y: results.inclusive},
+                  {label:'陪伴 / accompany', y: results.accompany},
+                  {label:'支持 / support', y: results.support},
+                  {label:'饭菜 / meals', y: results.meals},
                 ],
                 'group3': [
-                  {label:'包容', y: results.inclusive},
-                  {label:'陪伴', y: results.accompany},
-                  {label:'支持', y: results.support},
-                  {label:'饭菜', y: results.meals},
+                  {label: '碎碎念 / nagging', y: results.nagging},
+                  {label: '过分干涉 / interfering', y: results.interfere},
+                  {label: '父母吵架 / quarrel', y:results.fight},
+                  {label: '偷看日记 / peeks into my diary', y:results.diary},
+                  {label: '逼逼 / forcing', y:results.fight},
+                  {label: '啰嗦 / long winded', y:results.fight},
+
                 ]
             };
             console.log(pollData)
