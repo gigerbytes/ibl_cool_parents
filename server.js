@@ -176,10 +176,10 @@ app.get('/poll', function(req, res){
                 ],
                 'group2': [
                   {label:'包容 / inclusive', y: results.inclusive},
-                  {label:'陪伴 / accompany', y: results.accompany},
+                  {label:'陪伴 / accompanyment', y: results.accompany},
                   {label:'支持 / support', y: results.support},
                   {label:'饭菜 / meals', y: results.meals},
-                  {label:'不管我 / alone', y: results.meals},
+                  {label:'不管我 / leave me alone', y: results.meals},
                 ],
                 'group3': [
                   {label: '碎碎念 / nagging', y: results.nagging},
