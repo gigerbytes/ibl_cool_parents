@@ -186,8 +186,8 @@ app.get('/poll', function(req, res){
                   {label: '过分干涉 / interfering', y: results.interfere},
                   {label: '父母吵架 / quarrel', y:results.fight},
                   {label: '偷看日记 / peeks into my diary', y:results.diary},
-                  {label: '逼逼 / forcing', y:results.fight},
-                  {label: '啰嗦 / long winded', y:results.fight},
+                  {label: '逼逼 / forcing', y:results.force},
+                  {label: '啰嗦 / long winded', y:results.long},
 
                 ]
             };
