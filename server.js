@@ -181,5 +181,5 @@ app.get('/poll-update', function(req, res){
 
 })
 
-http.listen(8000)
+http.listen(80)
 // https.listen(443)
