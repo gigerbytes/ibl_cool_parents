@@ -87,12 +87,15 @@
                     {y: dataPoints2[1].y + vote.new_val.accompany, label:"陪伴" },
                     {y: dataPoints2[2].y + vote.new_val.support, label:"支持" },
                     {y: dataPoints2[3].y + vote.new_val.meals, label:"饭菜" }
+                    {y: dataPoints2[4].y + vote.new_val.alone, label:"不管我" }
                 ]
                 chart3.options.data[0].dataPoints = [
                     {y: dataPoints3[0].y + vote.new_val.nagging, label:"碎碎念" },
                     {y: dataPoints3[1].y + vote.new_val.interfere, label:"过分干涉" },
                     {y: dataPoints3[2].y + vote.new_val.fight, label:"父母吵架" },
                     {y: dataPoints3[3].y + vote.new_val.diary, label:"偷看日记" }
+                    {y: dataPoints3[4].y + vote.new_val.force, label:"逼逼" }
+                    {y: dataPoints3[5].y + vote.new_val.long, label:"啰嗦" }
                 ]
                 chart1.render()
                 chart2.render()

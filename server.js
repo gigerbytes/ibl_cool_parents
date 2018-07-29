@@ -59,6 +59,7 @@ app.post('/vote', function(req, res){
             'accompany': 0,
             'support':0,
             'meals':0,
+            'alone':0,
             'nagging':0,
             'interfere':0,
             'fight':0,
@@ -120,6 +121,11 @@ app.get('/poll', function(req, res){
                 cb(null, count)
             })
         }
+        stack.alone = function(cb) {
+            r.table('records').filter({'alone' : 1}).count().run(conn, function(err, count){
+                cb(null, count)
+            })
+        }
         stack.nagging = function(cb) {
             r.table('records').filter({'nagging' : 1}).count().run(conn, function(err, count){
                 cb(null, count)
@@ -173,6 +179,7 @@ app.get('/poll', function(req, res){
                   {label:'陪伴 / accompany', y: results.accompany},
                   {label:'支持 / support', y: results.support},
                   {label:'饭菜 / meals', y: results.meals},
+                  {label:'不管我 / alone', y: results.meals},
                 ],
                 'group3': [
                   {label: '碎碎念 / nagging', y: results.nagging},
